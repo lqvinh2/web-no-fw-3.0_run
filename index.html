@@ -1,91 +1,38 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VUI-MUA</title>
-
-  <link rel="stylesheet" href="/app-code.27b29ece.css">
-  <link rel="stylesheet" href="/app-code.8353e49f.css">
-
-  <script src="/app-code.676ec46d.js"></script>
-  <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
-
-  <script type="module" src="/app-code.1a947e94.js"></script>
-
-
-  <script src="/app-code.c9f66093.js"></script>
-  <script src="/app-code.fab6750d.js"></script>
-  <script src="/app-code.c36f364e.js"></script>
-  <script src="/app-code.31d849af.js"></script>
-  <script src="/app-code.3f374574.js"></script>
-  <script src="/app-code.3b0cfa8d.js"></script>
-  <script src="/app-code.c850b944.js"></script>
-
-   <script src="/app-code.04174670.js"></script>
-   <script src="/app-code.8bb5eb99.js"></script>
-   <script src="/app-code.84b5feb1.js"></script>
-  <script src="/app-code.1c6c7bf6.js"></script>
-  
-</head>
-
-<body>
-    <div class="d-flex-c">
+<!DOCTYPE html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>VUI-MUA</title><link rel=stylesheet href=app-code.7394517f.css><link rel=stylesheet href=app-code.e3c47232.css><script src=app-code.376abefe.js></script><script src=https://code.jquery.com/jquery-4.0.0.min.js integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin=anonymous></script><script type=module src=app-code.6521c457.js></script><script src=app-code.ecd269fb.js></script><script src=app-code.6c3469e4.js></script><script src=app-code.08f881f5.js></script><script src=app-code.37b579db.js></script><script src=app-code.badac52a.js></script><script src=app-code.a8c145f1.js></script><script src=app-code.ce416f45.js></script><script src=app-code.236da1bc.js></script><script src=app-code.e40ed45e.js></script><script src=app-code.94c65c80.js></script><script src=app-code.7f948df6.js></script><body>
+    <div class=d-flex-c>
       <button class="btn btn-primary" onclick="event.preventDefault(); test_sendMail(this);">mail ME</button>
     </div>
-    <script>function sendMailViaMyServer() {
-    let phone = c_get_user_phone();
-    let cartAllItem = c_load(saveKEY.cartAllItem) || [];
-    let html = c_convertListProduct_willBUY_ToHTMLTable(cartAllItem);
-    const data = {
-        to: "lqvinh.hsu@gmail.com",
-        subject: `[MUAVUI] \u{110}\u{1A1}n h\xe0ng m\u{1EDB}i t\u{1EEB} KH [${phone}]`,
-        htmlContent: html
-    };
-    fetch('http://localhost:3002/send-email', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then((response)=>{
-        if (response.ok) window.showToast("G\u1EEDi mail th\xe0nh c\xf4ng!", "success");
-    }).catch((err)=>console.error(err));
-}
-function test_sendMail(btn) {
-    debugger;
-    sendMailViaMyServer();
-}
-
-</script>
-    <div id="toast-container">
+    <script>function sendMailViaMyServer(){let e=c_get_user_phone();fetch("http://localhost:3002/send-email",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({to:"lqvinh.hsu@gmail.com",subject:`[MUAVUI] \u{110}\u{1A1}n h\xe0ng m\u{1EDB}i t\u{1EEB} KH [${e}]`,htmlContent:c_convertListProduct_willBUY_ToHTMLTable(c_load(saveKEY.cartAllItem)||[])})}).then(e=>{e.ok&&window.showToast("Gửi mail thành công!","success")}).catch(e=>console.error(e))}function test_sendMail(e){sendMailViaMyServer()}</script>
+    <div id=toast-container>
     </div>
 
-    <!-- Modal Đăng Nhập S-->  
-    <div class="modal fade modal2" id="modalLoginForm" aria-hidden="true" tabindex="-1" data-bs-keyboard="true" data-bs-backdrop="static">
-      <!--use modal-dialog-center OR modal-dialog-top-middle-->
+      
+    <div class="fade modal modal2" id=modalLoginForm aria-hidden=true tabindex=-1 data-bs-keyboard=true data-bs-backdrop=static>
+      
       <div class="modal-dialog modal-dialog-top-middle">
-        <div class="modal-content modal-content-custom11 ">
+        <div class="modal-content modal-content-custom11">
     
-          <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class=modal-header>
+            <button type=button class=btn-close data-bs-dismiss=modal aria-label=Close></button>
           </div>
     
-          <div class="modal-body">
+          <div class=modal-body>
             <div>
-              <h2 class="modal-title w100 text-center">Đăng Nhập</h2>
+              <h2 class="modal-title text-center w100">Đăng Nhập</h2>
               <form>
                 <div class="d-flex-c d-flex-column">
-                  <div class="mb-1 d-flex-c d-flex-column">
-                    <label for="exampleInputEmail1" class="form-label mb-0" style="margin-top: 10px">
-                      <h5 class="w100 text-center">Số Điện Thoại</h5>
+                  <div class="d-flex-c d-flex-column mb-1">
+                    <label for=exampleInputEmail1 class="form-label mb-0" style=margin-top:10px>
+                      <h5 class="text-center w100">Số Điện Thoại</h5>
                     </label>
-                    <input type="number" value="1" class="form-control" id="txtLoginPhone" aria-describedby="phoneHelp">
+                    <input type=number value=1 class=form-control id=txtLoginPhone aria-describedby=phoneHelp>
               
-                    <label for="exampleInputEmail1" class="form-label mb-0" style="margin-top: 10px">
-                      <h5 class="w100 text-center">Mật Khẩu</h5>
+                    <label for=exampleInputEmail1 class="form-label mb-0" style=margin-top:10px>
+                      <h5 class="text-center w100">Mật Khẩu</h5>
                     </label>
-                    <input type="password" value="1" class="form-control" id="txtLoginPass" aria-describedby="phoneHelp">
+                    <input type=password value=1 class=form-control id=txtLoginPass aria-describedby=phoneHelp>
               
-                    <div id="phoneHelp" class="form-text">Chúng Tôi Luôn giữ thông tin cá nhân của bạn an toàn.</div>
+                    <div id=phoneHelp class=form-text>Chúng Tôi Luôn giữ thông tin cá nhân của bạn an toàn.</div>
                   </div>
               
                   <button class="btn btn-primary" onclick="event.preventDefault(); btnLogginClick(this);">Đăng Nhập</button>
@@ -99,70 +46,70 @@ function test_sendMail(btn) {
         </div>
       </div>
     </div>
-    <!-- Modal Đăng Nhập E-->
+    
 
-  <!-- Header Màu Cam -->
-  <header class="header-orange">
-    <div class="container">
-      <nav class="top-nav">
-        <div class="nav-left">
+  
+  <header class=header-orange>
+    <div class=container>
+      <nav class=top-nav>
+        <div class=nav-left>
           <span>Kênh Người Bán</span> | <span>Trở thành Người bán MUAVUI</span> | <span>Tải ứng dụng</span> | <span>Kết
             nối</span>
         </div>
-        <div class="nav-right">
+        <div class=nav-right>
           <span>Thông báo</span> | <span>Hỗ trợ</span> | <span>Tiếng Việt</span> | <span>Đăng Ký</span> | 
-          <span id="holder_Login_userInfo" class="d-none">
+          <span id=holder_Login_userInfo class=d-none>
           </span>
-          <span id="holder_btn_login" class="d-none">
-            <button id="btnOpenModalLogin" class="btn-login" onclick="event.preventDefault(); c_openModal('modalLoginForm') ">Đăng Nhập</button>
+          <span id=holder_btn_login class=d-none>
+            <button id=btnOpenModalLogin class=btn-login onclick="event.preventDefault(); c_openModal('modalLoginForm') ">Đăng Nhập</button>
           </span>
 
         </div>
       </nav>
 
-      <div class="search-section">
-        <div class="logo">MUAVUI</div>
-        <div class="search-bar-container">
-          <div class="search-input-group">
-            <input type="text" placeholder="MUAVUI bao ship 0Đ - Đăng ký ngay!">
-            <button class="btn-search">🔍</button>
+      <div class=search-section>
+        <div class=logo>MUAVUI</div>
+        <div class=search-bar-container>
+          <div class=search-input-group>
+            <input placeholder="MUAVUI bao ship 0Đ - Đăng ký ngay!">
+            <button class=btn-search>🔍</button>
           </div>
-          <div class="search-tags">
+          <div class=search-tags>
             <span>Sản Phẩm 0 Đồng</span> <span>Dép Nữ</span> <span>Dép Nữ</span> <span>Áo Khoác Nam</span> <span>Túi
               Xách Nữ</span>
           </div>
         </div>
-        <div class="cart-icon">
-          <div class="cart-wrapper">
-            <span class="icon">🛒</span>
-            <div class="cart-dropdown" id="cartDropdown">
+        <div class=cart-icon>
+          <div class=cart-wrapper>
+            <span class=icon>🛒</span>
+            <div class=cart-dropdown id=cartDropdown>
           
-              <div class="mobile-cart-header">
-                <button class="btn-close-cart invisible" id="btnCloseCart">✕</button>
-                <span class="myCartTitle">Giỏ hàng của tôi</span>
-                <button class="btn-close-cart" id="btnCloseCart">✕</button>
+              <div class=mobile-cart-header>
+                <button class="btn-close-cart invisible" id=btnCloseCart>✕</button>
+                <span class=myCartTitle>Giỏ hàng của tôi</span>
+                <button class=btn-close-cart id=btnCloseCart>✕</button>
               </div>
           
           
-              <div class="d-flex">
+              <div class=d-flex>
           
-                <div class="cart-list-items">
-                  <!-- cart-item  create in code JS by "cart-item-$$id$$" -->
+                <div class=cart-list-items>
+                  
                 </div>
           
-                <div class="section-buy-product" style="color: #000">
-                  <div class="total-payment" style="margin-bottom: 10px; font-size: 18px; font-weight: bold">
+                <div class=section-buy-product style=color:#000>
+                  <div class=total-payment style=margin-bottom:10px;font-size:18px;font-weight:700>
                      Tổng thanh toán: 0₫
                   </div>
-                  <div note="using JS" class="selected-products"></div>
-                  <div class="w100 d-flex-c mt-2">
-                    <button id="cart_btnMuaHang" type="button" class="btn btn-success" onclick="event.preventDefault(); cart_btnMuaHangClick(this)">MUA HÀNG</button>
+                  <div note="using JS" class=selected-products></div>
+                  <div class="d-flex-c mt-2 w100">
+                    <button id=cart_btnMuaHang type=button class="btn btn-success" onclick="event.preventDefault(); cart_btnMuaHangClick(this)">MUA HÀNG</button>
                   </div>
                 </div>
               </div>
           
-              <div class="cart-footer">
-                <button class="btn-view-cart">Xem Giỏ Hàng</button>
+              <div class=cart-footer>
+                <button class=btn-view-cart>Xem Giỏ Hàng</button>
               </div>
           
           
@@ -173,121 +120,120 @@ function test_sendMail(btn) {
     </div>
   </div></header>
 
-  <!-- Khoảng trống cho Banner Quảng Cáo -->
-  <section class="banner-placeholder">
-    <div class="container">
-      <!-- Đưa panel quảng cáo của bạn vào đây -->
-      <div class="fake-banner">KHÔNG GIAN CHO PANEL QUẢNG CÁO CỦA BẠN</div>
+  
+  <section class=banner-placeholder>
+    <div class=container>
+      
+      <div class=fake-banner>KHÔNG GIAN CHO PANEL QUẢNG CÁO CỦA BẠN</div>
     </div>
   </section>
 
-  <!-- Hàng Tiện Ích (Deal 1k -> Mã giảm giá) -->
-  <section class="quick-links">
+  
+  <section class=quick-links>
     <div class="container link-wrapper">
-      <div class="link-item">
-        <img src="https://picsum.photos/200/300" alt="icon">
+      <div class=link-item>
+        <img src=https://picsum.photos/200/300 alt=icon>
         <span>Deal Từ 1.000Đ</span>
       </div>
-      <div class="link-item">
-        <img src="https://picsum.photos/200/300" alt="icon">
+      <div class=link-item>
+        <img src=https://picsum.photos/200/300 alt=icon>
         <span>MUAVUI Xử Lý</span>
       </div>
-      <div class="link-item">
-        <img src="https://picsum.photos/200/300" alt="icon">
+      <div class=link-item>
+        <img src=https://picsum.photos/200/300 alt=icon>
         <span>Deal Hot Giá Vàng</span>
       </div>
-      <div class="link-item">
-        <img src="https://picsum.photos/200/300" alt="icon">
+      <div class=link-item>
+        <img src=https://picsum.photos/200/300 alt=icon>
         <span>MUAVUI Style</span>
       </div>
-      <div class="link-item">
-        <img src="https://picsum.photos/200/300" alt="icon">
+      <div class=link-item>
+        <img src=https://picsum.photos/200/300 alt=icon>
         <span>Khách Hàng Thân Thiết</span>
       </div>
-      <div class="link-item">
-        <img src="https://picsum.photos/200/300" alt="icon">
+      <div class=link-item>
+        <img src=https://picsum.photos/200/300 alt=icon>
         <span>Mã Giảm Giá</span>
       </div>
     </div>
   </section>
 
-  <!-- Phần Danh Mục -->
-  <section class="categories">
-    <div class="container">
-      <h3 class="section-title">DANH MỤC</h3>
-      <div class="category-grid">
-        <!-- Hàng 1 (Ví dụ 10 mục) -->
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Thời Trang Nam</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Điện Thoại</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Thiết Bị Điện Tử</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Máy Tính</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Máy Ảnh</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Đồng Hồ</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Giày Dép Nam</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Gia Dụng</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Thể Thao</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Ô Tô &amp; Xe Máy</span></div>
-        <!-- Hàng 2 -->
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Thời Trang Nữ</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Mẹ &amp; Bé</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Nhà Cửa</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Sắc Đẹp</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Sức Khỏe</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Giày Dép Nữ</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Túi Ví Nữ</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Trang Sức</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Bách Hóa</span></div>
-        <div class="cat-item"><img src="https://picsum.photos/200/300" alt="cat"><span>Nhà Sách</span></div>
+  
+  <section class=categories>
+    <div class=container>
+      <h3 class=section-title>DANH MỤC</h3>
+      <div class=category-grid>
+        
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Thời Trang Nam</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Điện Thoại</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Thiết Bị Điện Tử</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Máy Tính</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Máy Ảnh</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Đồng Hồ</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Giày Dép Nam</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Gia Dụng</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Thể Thao</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Ô Tô &amp; Xe Máy</span></div>
+        
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Thời Trang Nữ</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Mẹ &amp; Bé</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Nhà Cửa</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Sắc Đẹp</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Sức Khỏe</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Giày Dép Nữ</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Túi Ví Nữ</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Trang Sức</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Bách Hóa</span></div>
+        <div class=cat-item><img src=https://picsum.photos/200/300 alt=cat><span>Nhà Sách</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Tất cả sản phẩm -->
-  <section class="products-section">
-    <div class="container">
-      <div class="section-header-title">GỢI Ý HÔM NAY</div>
+  
+  <section class=products-section>
+    <div class=container>
+      <div class=section-header-title>GỢI Ý HÔM NAY</div>
 
      
-      <!--  product-grid S -->
-      <div class="product-grid">
-        <!-- Một khối sản phẩm mẫu S -->
-        <div class="product-card" product-id="$$id$$">
-          <div class="product-img-wrapper">
-            <!-- Link ảnh mới của bạn -->
-            <img src="https://picsum.photos/200/300" alt="Sản phẩm">
+      
+      <div class=product-grid>
         
-            <!-- Các Badge đè lên ảnh ở góc trái dưới -->
-            <div class="badge-container">
+        <div class=product-card product-id=$$id$$>
+          <div class=product-img-wrapper>
+            
+            <img src=https://picsum.photos/200/300 alt="Sản phẩm">
+        
+            
+            <div class=badge-container>
               <span class="badge badge-date">25-2</span>
               <span class="badge badge-voucher">Voucher</span>
             </div>
           </div>
 
-          <div class="product-btn-buy-now-add-to-cart d-flex-j-sb">
+          <div class="d-flex-j-sb product-btn-buy-now-add-to-cart">
             <button class="btn-buy-now btn-buy-now-add-to-cart">Mua Ngay</button>
             <button class="btn-add-to-cart btn-buy-now-add-to-cart">Thêm Vào Giỏ</button>
           </div>
         
-          <div class="product-info">
-            <div class="product-name">
-              <span class="label-love">Yêu thích+</span> 
-              <span class="name">$$product-name$$</span>
+          <div class=product-info>
+            <div class=product-name>
+              <span class=label-love>Yêu thích+</span> 
+              <span class=name>$$product-name$$</span>
             </div>
-            <div class="product-price-row">
-              <span class="currency">$$price$$</span>
-              <span class="price"></span>
-              <span class="sold">Đã bán $$sold$$</span>
+            <div class=product-price-row>
+              <span class=currency>$$price$$</span>
+              <span class=price></span>
+              <span class=sold>Đã bán $$sold$$</span>
             </div>
           </div>
         
-          <!-- Nút Tìm sản phẩm tương tự (C2) nằm dưới cùng -->
-          <a href="/search-similar" class="btn-similar">Tìm sản phẩm tương tự</a>
+          
+          <a href=/search-similar class=btn-similar>Tìm sản phẩm tương tự</a>
         </div>
-        <!-- Một khối sản phẩm mẫu E -->
+        
       </div>
-       <!--  product-grid E -->
+       
     </div>
   </section>
 
 
-</body></html>
