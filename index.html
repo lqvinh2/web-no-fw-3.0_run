@@ -5,7 +5,8 @@
     <script>function sendMailViaMyServer(){let e=c_get_user_phone();fetch("http://localhost:3002/send-email",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({to:"lqvinh.hsu@gmail.com",subject:`[MUAVUI] \u{110}\u{1A1}n h\xe0ng m\u{1EDB}i t\u{1EEB} KH [${e}]`,htmlContent:c_convertListProduct_willBUY_ToHTMLTable(c_load(saveKEY.cartAllItem)||[])})}).then(e=>{e.ok&&window.showToast("Gửi mail thành công!","success")}).catch(e=>console.error(e))}function test_sendMail(e){sendMailViaMyServer()}</script>
     <div id=toast-container>
     </div>
-
+    <div id=toast-container2>
+    </div>
       
     <div class="fade modal modal2" id=modalLoginForm aria-hidden=true tabindex=-1 data-bs-keyboard=true data-bs-backdrop=static>
       
