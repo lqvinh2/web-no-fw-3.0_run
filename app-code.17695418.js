@@ -2,6 +2,7 @@ function cart_renderCartByUser() {
     let isUserLogin = c_is_user_has_login();
     if (!isUserLogin) return;
     let listAllItemsCart = c_load(saveKEY.cartAllItem);
+    let listItemCartPayment = c_load(saveKEY.cartItemTableWILLBuy);
     // loop listAllItemsCart để render ra giỏ hàng
     if (listAllItemsCart && listAllItemsCart.length > 0) listAllItemsCart.forEach((item)=>{
         item.id = item.productId;

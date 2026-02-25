@@ -79,12 +79,32 @@ function c_save(key, info) {
         saveData = c_encodeBase64(saveData);
         localStorage.setItem(phone + "_" + saveKEY.cartAllItem, saveData);
     }
+    if (key == saveKEY.cartItemTableWILLBuy) {
+        $(`.payment-item-table tbody tr`).each(function() {
+            let productId = $(this).attr("product-id");
+            let name = $(this).find(`.payment-item-name`).text();
+            let price = $(this).find(`.payment-item-price`).text();
+            let quantity = $(this).find(`.payment-item-quantity`).text();
+            let totalPrice = $(this).find(`.payment-item-total-price`).text();
+            paymentItems.push({
+                productId: productId,
+                name: name,
+                price: price.toNumber(),
+                quantity: quantity,
+                totalPrice: totalPrice.toNumber()
+            });
+        });
+        let saveData = JSON.stringify(paymentItems);
+        saveData = c_encodeBase64(saveData);
+        localStorage.setItem(phone + "_" + saveKEY.cartItemTableWILLBuy, saveData);
+        return;
+    }
 }
 function c_load(key) {
     let phone = c_get_user_phone();
     // nếu có phone là đã đăng nhập rồi.
     if (key == saveKEY.phone) return localStorage.getItem(saveKEY.phone);
-    if (key.includes(saveKEY.cartAllItem)) {
+    if (key.includes(saveKEY.cartItemTableWILLBuy) || key.includes(saveKEY.cartAllItem)) {
         let paymentItems = localStorage.getItem(phone + '_' + key);
         if (!paymentItems) return null;
         paymentItems = c_decodeBase64(paymentItems);

@@ -1,4 +1,5 @@
 const saveKEY = {
+    cartItemTableWILLBuy: "cart_ItemTableWILLBuy",
     cartAllItem: "CART_ALL_ITEM",
     PAYMENT: "PAYMENT",
     userLogin: "USER_LOGIN",
@@ -115,6 +116,7 @@ function cartItemCheckboxClick(checkbox) {
         let productId = $(this).attr("product-id");
         table_JQ_paymentItem.find(`tr[product-id='${productId}']`).css("background-color", "transparent");
     });
+    c_save(saveKEY.cartItemTableWILLBuy);
 }
 
 //# sourceMappingURL=app-code.579125c3.js.map
