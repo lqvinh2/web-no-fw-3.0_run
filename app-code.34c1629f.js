@@ -717,13 +717,15 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // Khởi tạo ngay trong module
-parcelHelpers.export(exports, "sendMail_thongBao_DON_HANG_MOI", ()=>sendMail_thongBao_DON_HANG_MOI);
+parcelHelpers.export(exports, "emailJS_sendMail_thongBao_DON_HANG_MOI", ()=>emailJS_sendMail_thongBao_DON_HANG_MOI);
+parcelHelpers.export(exports, "email_sendMail_thongBao_DON_HANG_MOI", ()=>email_sendMail_thongBao_DON_HANG_MOI);
 var _browser = require("@emailjs/browser");
 var _browserDefault = parcelHelpers.interopDefault(_browser);
 let eYOUR_PUBLIC_KEY = '3SYLMPByPgBZann_q';
 let etempEmail_ID = 'template_9fjmuo5';
 let eService_ID = 'service_mev14lc';
-function sendMail_thongBao_DON_HANG_MOI(params) {
+let HOST_MAIL = "http://localhost:3002";
+function emailJS_sendMail_thongBao_DON_HANG_MOI(params) {
     // Các key trong params phải TRÙNG KHỚP với {{biến}} trong Template đã tạo
     const paramsTEST = {
         param_to_email: "lqvinh.hsu@gmail.com",
@@ -737,8 +739,29 @@ function sendMail_thongBao_DON_HANG_MOI(params) {
         showToast("G\u1EEDi mail th\u1EA5t b\u1EA1i!", "error");
     });
 }
+function email_sendMail_thongBao_DON_HANG_MOI(params) {
+    const data = {
+        to: "lqvinh.hsu@gmail.com",
+        subject: `[MUAVUI] \u{110}\u{1A1}n h\xe0ng m\u{1EDB}i t\u{1EEB} KH [${params.phone}]`,
+        htmlContent: params.HTML_Table_listProduct
+    };
+    fetch(`${HOST_MAIL}/send-email`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then((response)=>{
+        if (response.ok) showToast("\u0110\xe3 \u0111\u1EB7t h\xe0ng th\xe0nh c\xf4ng! C\u1EA3m \u01A1n b\u1EA1n \u0111\xe3 mua h\xe0ng!", "success");
+        else showToast("\u0110\u1EB7t h\xe0ng th\u1EA5t b\u1EA1i!", "error");
+    }).catch((err)=>{
+        showToast("L\u1ED6I \u0110\u1EB7t h\xe0ng", "error");
+        console.error(err);
+    });
+}
 window.emailjs = (0, _browserDefault.default);
-window.sendMail_thongBao_DON_HANG_MOI = sendMail_thongBao_DON_HANG_MOI;
+window.email_sendMail_thongBao_DON_HANG_MOI = email_sendMail_thongBao_DON_HANG_MOI;
+window.email_sendMail_thongBao_DON_HANG_MOI = email_sendMail_thongBao_DON_HANG_MOI;
 
 },{"@emailjs/browser":"a603P","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"a603P":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

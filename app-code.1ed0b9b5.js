@@ -1,0 +1,2 @@
+function cart_btnMuaHangClick(e){if(!c_is_user_has_login())return void showToast("Vui lòng đăng nhập để mua hàng!","error",3e3);let n=c_load(saveKEY.cartAllItem)||[],o=[];(n.forEach(e=>{e.isChecked&&o.push(e)}),0===o.length)?showToast("Chọn sản phẩm để mua hàng!","error",2e3):email_sendMail_thongBao_DON_HANG_MOI({phone:c_get_user_phone(),HTML_Table_listProduct:c_convertListProduct_willBUY_ToHTMLTable(o)})}
+//# sourceMappingURL=app-code.1ed0b9b5.js.map

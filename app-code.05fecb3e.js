@@ -14,7 +14,7 @@ function cart_btnMuaHangClick(params) {
         showToast("Ch\u1ECDn s\u1EA3n ph\u1EA9m \u0111\u1EC3 mua h\xe0ng!", 'error', 2000);
         return;
     }
-    sendMail_thongBao_DON_HANG_MOI({
+    email_sendMail_thongBao_DON_HANG_MOI({
         phone: c_get_user_phone(),
         HTML_Table_listProduct: c_convertListProduct_willBUY_ToHTMLTable(itemWillBuy)
     });
