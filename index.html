@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>VUI-MUA</title><link rel=stylesheet href=app-code.7394517f.css><link rel=stylesheet href=app-code.e3c47232.css><script src=app-code.376abefe.js></script><script src=https://code.jquery.com/jquery-4.0.0.min.js integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin=anonymous></script><script type=module src=app-code.6521c457.js></script><script src=app-code.ecd269fb.js></script><script src=app-code.6c3469e4.js></script><script src=app-code.08f881f5.js></script><script src=app-code.37b579db.js></script><script src=app-code.badac52a.js></script><script src=app-code.a8c145f1.js></script><script src=app-code.ce416f45.js></script><script src=app-code.236da1bc.js></script><script src=app-code.e40ed45e.js></script><script src=app-code.94c65c80.js></script><script src=app-code.7f948df6.js></script><body>
+<!DOCTYPE html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>VUI-MUA</title><link rel=stylesheet href=app-code.7394517f.css><link rel=stylesheet href=app-code.e3c47232.css><script src=app-code.376abefe.js></script><script src=https://code.jquery.com/jquery-4.0.0.min.js integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin=anonymous></script><script type=module src=app-code.464e04d5.js></script><script type=module src=app-code.3a02d197.js></script><script type=module src=app-code.172da0cf.js></script><script src=app-code.271d1148.js></script><script src=app-code.6c3469e4.js></script><script src=app-code.9c4b44f4.js></script><script src=app-code.35d9e790.js></script><script src=app-code.58de3b3d.js></script><script src=app-code.2f69a4a5.js></script><script src=app-code.ce416f45.js></script><script src=app-code.236da1bc.js></script><script src=app-code.2c26d48d.js></script><script src=app-code.62e0b565.js></script><script src=app-code.4a5d2c3f.js></script><script src=app-code.ca4712b2.js></script><script src=app-code.f9aa2526.js></script><body>
     <div class=d-flex-c>
-      <button class="btn btn-primary" onclick="event.preventDefault(); test_sendMail(this);">mail ME</button>
+      <button class="btn btn-primary" onclick="event.preventDefault(); test_api(this);">test_api</button>
     </div>
-    <script>function sendMailViaMyServer(){let e=c_get_user_phone();fetch("http://localhost:3002/send-email",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({to:"lqvinh.hsu@gmail.com",subject:`[MUAVUI] \u{110}\u{1A1}n h\xe0ng m\u{1EDB}i t\u{1EEB} KH [${e}]`,htmlContent:c_convertListProduct_willBUY_ToHTMLTable(c_load(saveKEY.cartAllItem)||[])})}).then(e=>{e.ok&&window.showToast("Gửi mail thành công!","success")}).catch(e=>console.error(e))}function test_sendMail(e){sendMailViaMyServer()}</script>
+    <script>function test_api(e){api_createNewPurchaseOrder_Async({phone:"111",info:"info1"})}</script>
     <div id=toast-container>
     </div>
 
       
-    <div class="fade modal modal2" id=modalLoginForm aria-hidden=true tabindex=-1 data-bs-keyboard=true data-bs-backdrop=static>
+    <div class="modal modal2" id=modalLoginForm aria-hidden=true tabindex=-1 data-bs-keyboard=true data-bs-backdrop=static>
       
       <div class="modal-dialog modal-dialog-top-middle">
         <div class="modal-content modal-content-custom11">
@@ -48,6 +48,55 @@
     </div>
     
 
+
+      
+    <div class="modal modal2" id=modalShowPO aria-hidden=true tabindex=-1 data-bs-keyboard=true data-bs-backdrop=static>
+      
+      <div class="modal-dialog modal-dialog-centered" style=width:400px;max-width:400px>
+        <div class="modal-content modal-content-custom11">
+    
+          <div class=modal-header>
+            <div class="d-flex-c w100" style=color:var(--bg);font-size:13px;font-weight:700>
+              Danh Sách ĐƠN HÀNG CỦA BẠN
+            </div>
+            <button type=button class=btn-close data-bs-dismiss=modal aria-label=Close></button>
+          </div>
+    
+          <div class=modal-body>
+            <div class=modalShowPO_wrap style=max-height:300px;overflow:auto>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+
+    
+      
+    <div class="modal modal2" id=modalShowPO_detail aria-hidden=true tabindex=-1 data-bs-keyboard=true data-bs-backdrop=static>
+      
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-custom11">
+    
+          <div class=modal-header>
+            <div class="d-flex-c w100" style=color:var(--bg);font-size:13px;font-weight:700>
+                <span class=PODetailTitle>Chi Tiết Đơn Hàng : {XXX}</span>
+            </div>
+            <button type=button class=btn-close data-bs-dismiss=modal aria-label=Close></button>
+          </div>
+    
+          <div class=modal-body>
+            <div class=modalShowPODetail_wrap>
+
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+      
+
+
   
   <header class=header-orange>
     <div class=container>
@@ -57,8 +106,12 @@
             nối</span>
         </div>
         <div class=nav-right>
+
           <span>Thông báo</span> | <span>Hỗ trợ</span> | <span>Tiếng Việt</span> | <span>Đăng Ký</span> | 
           <span id=holder_Login_userInfo class=d-none>
+              <span class=xinchaoPartID style=color:#fff;font-size:14px;font-weight:700>Xin Chào, ${phone}</span> | 
+              <button class=btn-logout onclick="event.preventDefault(); btnLogoutClick(this);">Đăng Xuất</button> | 
+              <button class="btn btn-primary btnShowPO d-none1" onclick="event.preventDefault(); btnShowPOClick(this);">Đang có XXX đơn hàng</button>
           </span>
           <span id=holder_btn_login class=d-none>
             <button id=btnOpenModalLogin class=btn-login onclick="event.preventDefault(); c_openModal('modalLoginForm') ">Đăng Nhập</button>

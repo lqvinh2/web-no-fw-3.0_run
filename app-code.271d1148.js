@@ -1,0 +1,22 @@
+function c_encodeBase64(t){try{let e=new TextEncoder().encode(t),o=String.fromCodePoint(...e);return btoa(o)}catch(t){return null}}function c_decodeBase64(t){try{let e=atob(t),o=Uint8Array.from(e,t=>t.codePointAt(0));return new TextDecoder().decode(o)}catch(t){return null}}function c_is_user_has_login(){return!!c_load(saveKEY.phone)}function c_get_user_phone(){return localStorage.getItem(saveKEY.phone)||null}function c_is_user_has_login___if_not_showModalLOGIN(t){return!!c_load(saveKEY.phone)||(showToast("Vui lòng đăng nhập","error",2e3),c_openModal("modalLoginForm"),!1)}var g_int_c_save=void 0;function c_save(t,e){let o=c_get_user_phone(),n=[];if(t==saveKEY.phone)return void localStorage.setItem(saveKEY.phone,e.phone);if(t==saveKEY.userLogin){let t=JSON.stringify(e);t=c_encodeBase64(t),localStorage.setItem(o+"_"+saveKEY.userLogin,t);return}if(t==saveKEY.cartAllItem){$(".cart-list-items .cart-item").each(function(){let t=$(this).attr("product-id"),e=$(this).find(".cart-item-name").text(),o=$(this).find(".cart-item-price").text(),r=$(this).find(".input-qty").val(),a=$(this).find(".cart-item-total-price").text(),c=$(this).find(".cart-item-checkbox").is(":checked");n.push({productId:t,name:e,price:o.toNumber(),quantity:r,totalPrice:a.toNumber(),isChecked:c})});let t=JSON.stringify(n);t=c_encodeBase64(t),localStorage.setItem(o+"_"+saveKEY.cartAllItem,t),g_int_c_save&&clearInterval(g_int_c_save),g_int_c_save=setInterval(()=>{clearInterval(g_int_c_save),api_userCart_insert_update_Async({user_phone:o,info:t}).then(t=>{t&&showToast(t.message)})},1e3)}}function c_load(t){let e=c_get_user_phone();if(t==saveKEY.phone)return localStorage.getItem(saveKEY.phone);if(t.includes(saveKEY.cartAllItem)){let o=localStorage.getItem(e+"_"+t);return o&&(o=c_decodeBase64(o))?JSON.parse(o):null}if(t.includes(saveKEY.userLogin)){let t=localStorage.getItem(e+"_"+saveKEY.userLogin);return t&&(t=c_decodeBase64(t))?JSON.parse(t):null}}function c_remove(t){localStorage.removeItem(t)}function c_convertListProduct_willBUY_ToHTMLTable(t){let e=`<div><table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">  
+                <thead>
+                <tr>
+                  <th style="background-color: #d0ee39;">S\u{1ED1} TT</th>
+                  <th style="background-color: #e0995b;">m\xe3 SP</th>
+                  <th style="background-color: #f2f2f2; text-align: center;">T\xean s\u{1EA3}n ph\u{1EA9}m</th>
+                  <th style="background-color: #f2f2f2; text-align: center;">Gi\xe1</th>
+                  <th style="background-color: #f2f2f2; text-align: center;">S\u{1ED1} l\u{1B0}\u{1EE3}ng</th>
+                  <th style="background-color: #f2f2f2; text-align: center;">Th\xe0nh ti\u{1EC1}n</th>
+                </tr></thead>
+                <tbody>`,o=0;return t.forEach((t,n)=>{o+=t.totalPrice,e+=`<tr>
+              <td style="text-align: center;">${n+1}</td>
+              <td style="text-align: center;">${t.productId}</td>
+              <td style="text-align: left;">${t.name}</td>
+              <td style="text-align: right;">${t.price.formatMoney()}\u{20AB}</td>
+              <td style="text-align: center;">${t.quantity}</td>
+              <td style="text-align: right;">${t.totalPrice.formatMoney()}\u{20AB}</td>
+            </tr>`}),e+=`<tr>
+              <td colspan="5" style="text-align: right; font-weight: bold;">T\u{1ED5}ng c\u{1ED9}ng:</td>
+              <td style="text-align: right; font-weight: bold;">${o.formatMoney()}\u{20AB}</td>
+            </tr></tbody></table></div>`}function c_openModal(t){if(!t)return void console.error("Modal ID is required to open a modal.");if(!document.getElementById(t))return void console.error(`No modal found with ID: ${t}`);new bootstrap.Modal(document.getElementById(t),{}).show(),$(`#${t}`).css("opacity","0");let e=setInterval(()=>{if("none"!=$(`#${t}`).css("display")){clearInterval(e),$(`#${t}`).css({display:"flex",opacity:"1"}),$(`#${t}`).focus();let o="modal-id",n=2999;$(".modal-backdrop").each(function(){$(this).attr(o)?n=parseInt($(this).css("z-index")):(n+=2,$(this).attr(o,t),$(this).css("z-index",n))}),n=3e3,$(".modal-backdrop").each(function(){n+=2,$(this).css("z-index");let t=$(this).attr(o);$(`#${t}`).css("z-index",n)})}},50)}function c_closeModal(t){$("#"+t).find('[data-bs-dismiss="modal"]').click()}
+//# sourceMappingURL=app-code.271d1148.js.map
